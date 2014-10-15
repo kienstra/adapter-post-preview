@@ -17,6 +17,8 @@ A widget with a post preview, or a carousel of the most recent posts.
 * Hides the widget if the post is a single post on the page. For example, if you are on the "Hello World" page, you won't see the widget with a preview of "Hello World."
 * The carousel won't show posts that don't have an image.
 
+[youtube http://www.youtube.com/watch?v=mXSKjlVrh7I]
+
 == Installation ==
 
 1. Upload the adapter-post-preview directory to your /wp-content/plugins directory.
