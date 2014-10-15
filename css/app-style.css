@@ -5,10 +5,13 @@
 }
 
 .adapter-post-preview .carousel .carousel-control {
-  filter : initial ;    
   background-image : none ;
   top : 40% ;
   bottom : 40% ;
+  filter : initial ;
+}
+
+.widget.adapter-post-preview .carousel .carousel-control {
   filter : initial ;
 }
 
