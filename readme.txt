@@ -4,11 +4,11 @@ Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Tags: widgets, post, Bootstrap, mobile, responsive, 
 Requires at least: 3.8
 Tested up to: 4.0 
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A widget with a post preview, or a carousel of the most recent posts.
+Show your best posts in any widget area. Creates a widget with a post preview, or a carousel of the most recent posts. 
 
 == Description ==
 
@@ -47,9 +47,13 @@ Put the following in your functions.php file:
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed a bug in Internet Explorer display of the carousel
+
 = 1.0.0 =
 * First version
 
 == Upgrade Notice ==
 
-* N/A, first version
+= 1.0.1 =
+No need to update unless you use the carousel. This version fixes its display in Internet Explorer.
