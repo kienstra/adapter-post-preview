@@ -5,14 +5,14 @@ Plugin Name: Adapter Post Preview
 Plugin URI: www.ryankienstra.com/plugins/adapter-post-preview
 Description: Post preview widget
 
-Version: 1.0.1
+Version: 1.0.2
 Author: Ryan Kienstra
 Author URI: www.ryankienstra.com
 License: GPL2
 */
 
 define( 'APPW_PLUGIN_SLUG' , 'adapter-post_preview' ) ; 
-define( 'APPW_PLUGIN_VERSION' , '1.0.1' ) ;
+define( 'APPW_PLUGIN_VERSION' , '1.0.2' ) ;
 
 load_plugin_textdomain( 'adapter-post-preview' , false , basename( dirname( __FILE__ ) ) . '/languages' ) ;
 
