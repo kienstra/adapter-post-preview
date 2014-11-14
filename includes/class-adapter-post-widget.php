@@ -15,7 +15,7 @@ class Adapter_Post_Widget extends WP_Widget {
 		$selected_post_field_id = $this->get_field_id( 'selected_post' );
 		$posts = get_posts( array( 'type' => 'post' ,
 					   'orderby' => 'date' ,
-					   'posts_per_page' => '-1' ,
+					   'posts_per_page' => '100' ,
 		) );
 		?>
 		<p>
