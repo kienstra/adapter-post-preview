@@ -19,12 +19,12 @@ class Adapter_Post_Widget extends WP_Widget {
 		) );
 		?>
 		<p>
-		<label for="<?php echo $selected_post_field_id; ?>">
-			Post to display:
-		</label>
+			<label for="<?php echo $selected_post_field_id; ?>">
+				 Post to display:
+			</label>
 		<?php
 		if ( $posts ) :
-		?>
+			?>
 			<select name="<?php echo $selected_post_field_name; ?>" id="<?php echo $selected_post_field_id; ?>" class="widefat appw-post-selector">
 				<option value="appw_carousel_recent" <?php selected( $selected_post , 'appw_carousel_recent' , true ); ?>>
 					<?php _e( 'Carousel of recent posts' , 'adapter-post-preview' ); ?>
