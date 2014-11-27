@@ -36,9 +36,9 @@ The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons.
 
 Put the following in your functions.php file:
 `apply_filters( 'appw_link_text' , 'my_appw_link_text' );
- function my_appw_link_text( $text ) {
+function my_appw_link_text( $text ) {
 	 return 'Keep reading'; // or your own text
- }`
+}`
  
 == Screenshots ==
 
