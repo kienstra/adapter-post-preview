@@ -85,20 +85,24 @@ class Adapter_Post_Widget extends WP_Widget {
 	protected function get_post_ids_for_carousel() {
 		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
 		global $post;
-		$posts_for_carousel = get_posts( array(
+		$excluded_post_id = isset( $post ) ? $post->ID : false;
+		$query = new WP_Query( array(
 					'post_type' => 'post' ,
 					'orderby' => 'date' ,
 					'posts_per_page' => absint( $posts_per_page ) ,
-					'exclude' => isset( $post ) ? $post->ID : "" ,
-		) );
+					'no_found_rows' => true ,						  ) );
+		$appw_post_ids = array();
 
-		$post_ids = array();
-		foreach( $posts_for_carousel as $post_for_carousel ) {
-			if ( has_post_thumbnail( $post_for_carousel->ID ) ) {
-				array_push( $post_ids , $post_for_carousel->ID );
+		if ( $query->have_posts() ) {
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				if ( has_post_thumbnail() && ( get_the_id() !== $excluded_post_id ) ) {
+				        array_push( $appw_post_ids , absint( get_the_id() ) );
+				}
 			}
+			wp_reset_postdata();
 		}
-		return $post_ids;
+		return $appw_post_ids;
 	}
 
 	protected function get_all_post_preview_markup( $post_ids ) {
