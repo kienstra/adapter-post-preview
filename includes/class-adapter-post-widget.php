@@ -90,7 +90,8 @@ class Adapter_Post_Widget extends WP_Widget {
 					'post_type' => 'post' ,
 					'orderby' => 'date' ,
 					'posts_per_page' => absint( $posts_per_page ) ,
-					'no_found_rows' => true ,						  ) );
+					'no_found_rows' => true ,
+		) );
 		$appw_post_ids = array();
 
 		if ( $query->have_posts() ) {
