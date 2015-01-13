@@ -1,23 +1,25 @@
 <?php
 
-// Builds and echoes a modal carousel for each gallery
+/*
+ * Builds and echoes a modal carousel for each gallery
+ */
 class APP_Carousel {
 
-	private $carousel_id;
-	private $carousel_inner_items;
-	private $number_of_inner_items;
-	private $carousel_indicators;
-	private $slide_to_index;
-	private $post_markup;
-	private static $instance_id = 1;
+	protected static $instance_id = 1;
+	protected $carousel_id;
+	protected $carousel_inner_items;
+	protected $number_of_inner_items;
+	protected $carousel_indicators;
+	protected $slide_to_index;
+	protected $post_markup;
 
 	public function __construct() {
 		$this->carousel_id = 'appw-carousel-' . self::$instance_id;
+		self::$instance_id++;
 		$this->carousel_inner_items = '';
 		$this->number_of_inner_items = 0;
 		$this->carousel_indicators = '';
 		$this->slide_to_index = 0;
-		self::$instance_id++;
 	}
 
 	public function add_post_markup( $post_markup ) {
