@@ -36,7 +36,7 @@ class APP_Carousel {
 		</div> \n";
 	}
 
-	private function append_to_carousel_indicators(){
+	private function append_to_carousel_indicators() {
 		$is_active = (0 == $this->slide_to_index ) ? 'active' : '';
 
 		$this->carousel_indicators .=

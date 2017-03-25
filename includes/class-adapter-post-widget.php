@@ -3,21 +3,23 @@
 class Adapter_Post_Widget extends WP_Widget {
 
 	public function __construct() {
-		$options = array( 'classname' => 'adapter-post-preview' ,
-				  'description' => __( 'Show a carousel of recent posts, or a selected one' , 'adapter-post-preview' ) ,
+		$options = array(
+		'classname' => 'adapter-post-preview',
+				  'description' => __( 'Show a carousel of recent posts, or a selected one' , 'adapter-post-preview' ),
 		);
 		parent::__construct( 'adapter_post_preview' , __( 'Adapter Post Preview' , 'adapter-post-preview' ) , $options );
 	}
 
 	public function form( $instance ) {
-		$selected_post = isset( $instance[ 'selected_post' ] ) ? $instance[ 'selected_post' ] : "";
+		$selected_post = isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		$selected_post_field_name = $this->get_field_name( 'selected_post' );
 		$selected_post_field_id = $this->get_field_id( 'selected_post' );
-		$query = new WP_Query( array( 'post_type'              => 'post' , 
-					      'orderby'	    	       => 'date' ,
-					      'posts_per_page' 	       => '100' ,
-					      'no_found_rows'          => true ,
-					      'update_post_term_cache' => false ,
+		$query = new WP_Query( array(
+			'post_type'              => 'post',
+					      'orderby'	    	       => 'date',
+					      'posts_per_page' 	       => '100',
+					      'no_found_rows'          => true,
+					      'update_post_term_cache' => false,
 		) );
 		?>
 		<p>
@@ -29,7 +31,7 @@ class Adapter_Post_Widget extends WP_Widget {
 				<option value="appw_carousel_recent" <?php selected( $selected_post , 'appw_carousel_recent' , true ); ?>>
 					<?php esc_html_e( 'Carousel of recent posts' , 'adapter-post-preview' ); ?>
 				</option>
-				<?php while ( $query->have_posts() ) : 
+				<?php while ( $query->have_posts() ) :
 					$query->the_post();
 					?>
 						<option value="<?php echo esc_attr( get_the_id() ); ?>" <?php selected( $selected_post , get_the_id() , true ); ?>>
@@ -40,34 +42,33 @@ class Adapter_Post_Widget extends WP_Widget {
 			<?php wp_reset_postdata();
 		else :
 			esc_html_e( 'No posts on your site. Please write one.' , 'adapter-post-preview' );
-		endif; 
+		endif;
 		?>
 		</p>
 		<?php
 	}
 
-	public function update( $new_instance , $previous_instance ) {
+	public function update( $new_instance, $previous_instance ) {
 		$instance = $previous_instance;
-		$selected_post = isset( $new_instance[ 'selected_post' ] ) ? $new_instance[ 'selected_post' ] : "";
+		$selected_post = isset( $new_instance['selected_post'] ) ? $new_instance['selected_post'] : '';
 		if ( appw_is_valid_value( $selected_post ) ) {
-			$instance[ 'selected_post' ] = $selected_post;
+			$instance['selected_post'] = $selected_post;
 		}
 		return $instance;
 	}
 
-	public function widget( $args , $instance ) {	// todo : remove extract
-		$selected_post	= isset( $instance[ 'selected_post' ] ) ? $instance[ 'selected_post' ] : "";
+	public function widget( $args, $instance ) {
+		// todo : remove extract
+		$selected_post	= isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		if ( ! $selected_post ) {
 			return;
-		}
-		else if ( 'appw_carousel_recent' == $selected_post ) {
+		} elseif ( 'appw_carousel_recent' == $selected_post ) {
 			$markup = $this->get_carousel_markup();
-		}
-		else {
+		} else {
 			$markup = $this->get_single_post_preview_without_carousel( $selected_post );
 		}
-		
-		echo $args[ 'before_widget' ] . $markup . $args[ 'after_widget' ];
+
+		echo $args['before_widget'] . $markup . $args['after_widget'];
 	}
 
 	protected function get_carousel_markup() {
@@ -75,7 +76,7 @@ class Adapter_Post_Widget extends WP_Widget {
 		$post_preview_container = $this->get_all_post_preview_markup( $post_preview_ids );
 
 		$post_carousel = new APP_Carousel();
-		foreach( $post_preview_container as $post_preview ) {
+		foreach ( $post_preview_container as $post_preview ) {
 			$post_carousel->add_post_markup( $post_preview );
 		}
 		$markup = $post_carousel->get();
@@ -87,10 +88,10 @@ class Adapter_Post_Widget extends WP_Widget {
 		global $post;
 		$excluded_post_id = isset( $post ) ? $post->ID : false;
 		$query = new WP_Query( array(
-					'post_type' => 'post' ,
-					'orderby' => 'date' ,
-					'posts_per_page' => absint( $posts_per_page ) ,
-					'no_found_rows' => true ,
+					'post_type' => 'post',
+					'orderby' => 'date',
+					'posts_per_page' => absint( $posts_per_page ),
+					'no_found_rows' => true,
 		) );
 		$appw_post_ids = array();
 
@@ -112,9 +113,9 @@ class Adapter_Post_Widget extends WP_Widget {
 			$post_currently_on_page = $post;
 		}
 		$post_preview_container = array();
-		foreach( $post_ids as $post_id ) {
-			$post_markup =	$this->get_markup_for_single_post( $post_id );
-			array_push( $post_preview_container , $post_markup ) ;
+		foreach ( $post_ids as $post_id ) {
+			$post_markup = $this->get_markup_for_single_post( $post_id );
+			array_push( $post_preview_container , $post_markup );
 		}
 		if ( isset( $post_currently_on_page ) ) {
 			$post = $post_currently_on_page;
@@ -125,7 +126,7 @@ class Adapter_Post_Widget extends WP_Widget {
 	protected function get_markup_for_single_post( $post_id ) {
 		$post = get_post( $post_id );
 		setup_postdata( $post );
-		$post_markup =	appw_get_single_post_preview_markup( $post );
+		$post_markup = appw_get_single_post_preview_markup( $post );
 		wp_reset_postdata();
 		return $post_markup;
 	}
