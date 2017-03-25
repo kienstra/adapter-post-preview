@@ -68,17 +68,16 @@ class Adapter_Post_Widget extends \WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-		// todo : remove extract
 		$selected_post	= isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		if ( ! $selected_post ) {
 			return;
-		} elseif ( 'appw_carousel_recent' == $selected_post ) {
+		} elseif ( 'appw_carousel_recent' === $selected_post ) {
 			$markup = $this->get_carousel_markup();
 		} else {
 			$markup = $this->get_single_post_preview_without_carousel( $selected_post );
 		}
 
-		echo $args['before_widget'] . $markup . $args['after_widget'];
+		echo wp_kses_post( $args['before_widget'] ) . $markup . wp_kses_post( $args['after_widget'] );
 	}
 
 	protected function get_carousel_markup() {
@@ -97,7 +96,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
 		global $post;
 		$excluded_post_id = isset( $post ) ? $post->ID : false;
-		$query = new WP_Query( array(
+		$query = new \WP_Query( array(
 			'post_type' => 'post',
 			'orderby' => 'date',
 			'posts_per_page' => absint( $posts_per_page ),
@@ -143,8 +142,9 @@ class Adapter_Post_Widget extends \WP_Widget {
 
 	protected function get_single_post_preview_without_carousel( $post_id ) {
 		global $post;
-		if ( $post->ID == $post_id ) {
-			return ''; //the post is already showing on the page, so no need for a preview of it
+		if ( $post->ID === $post_id ) {
+			// The post is already showing on the page, so there's no need for a preview of it.
+			return '';
 		}
 		$markup = $this->get_all_post_preview_markup( array( $post_id ) );
 		$single_post_markup = reset( $markup );
@@ -172,7 +172,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	}
 
 	function is_valid_value( $input ) {
-		return ( is_numeric( $input ) || ( 'appw_carousel_recent' == $input ) );
+		return ( is_numeric( $input ) || ( 'appw_carousel_recent' === $input ) );
 	}
 
 }
