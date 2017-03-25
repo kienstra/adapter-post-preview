@@ -36,24 +36,25 @@ class Adapter_Post_Widget extends \WP_Widget {
 			<label for="<?php echo esc_attr( $selected_post_field_id ); ?>">
 				Post to display:
 			</label>
-		<?php if ( $query->have_posts() ) : ?>
-			<select name="<?php echo esc_attr( $selected_post_field_name ); ?>" id="<?php echo esc_attr( $selected_post_field_id ); ?>" class="widefat appw-post-selector">
-				<option value="appw_carousel_recent" <?php selected( $selected_post , 'appw_carousel_recent' , true ); ?>>
-					<?php esc_html_e( 'Carousel of recent posts' , 'adapter-post-preview' ); ?>
+		<?php if ( $query->have_posts() ) { ?>
+			<select name="<?php echo esc_attr( $selected_post_field_name ); ?>"
+				id="<?php echo esc_attr( $selected_post_field_id ); ?>" class="widefat appw-post-selector">
+				<option value="appw_carousel_recent" <?php selected( $selected_post, 'appw_carousel_recent', true ); ?>>
+					<?php esc_html_e( 'Carousel of recent posts', 'adapter-post-preview' ); ?>
 				</option>
-				<?php while ( $query->have_posts() ) :
+				<?php while ( $query->have_posts() ) {
 					$query->the_post();
 					?>
-						<option value="<?php echo esc_attr( get_the_id() ); ?>" <?php selected( $selected_post , get_the_id() , true ); ?>>
-							<?php echo esc_html( get_the_title() ); ?>
-						</option>
-				<?php endwhile; ?>
-			</select>
+					<option value="<?php echo esc_attr( get_the_id() ); ?>" <?php selected( $selected_post, get_the_id(), true ); ?>>
+					<?php echo esc_html( get_the_title() ); ?>
+					</option>
+				<?php } ?>
+		   </select>
 			<?php wp_reset_postdata();
-		else :
-			esc_html_e( 'No posts on your site. Please write one.' , 'adapter-post-preview' );
-		endif;
-		?>
+			} else {
+				esc_html_e( 'No posts on your site. Please write one.', 'adapter-post-preview' );
+			}
+			?>
 		</p>
 		<?php
 	}
