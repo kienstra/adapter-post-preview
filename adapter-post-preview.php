@@ -11,23 +11,7 @@ Author URI: www.ryankienstra.com
 License: GPL2
 */
 
-define( 'APPW_PLUGIN_SLUG' , 'adapter-post_preview' );
-define( 'APPW_PLUGIN_VERSION' , '1.0.2' );
+require_once dirname( __FILE__ ) . '/php/class-adapter-post-preview-plugin.php';
 
-load_plugin_textdomain( 'adapter-post-preview' , false , basename( dirname( __FILE__ ) ) . '/languages' );
-
-add_action( 'plugins_loaded' , 'appw_get_included_files' );
-function appw_get_included_files() {
-	include_once( plugin_dir_path( __FILE__ ) . 'php/class-app-carousel.php' );
-	include_once( plugin_dir_path( __FILE__ ) . 'php/class-adapter-post-widget.php' );
-}
-
-add_action( 'widgets_init' , 'appw_register_widget' );
-function appw_register_widget() {
-	register_widget( 'Adapter_Post_Widget' );
-}
-
-add_action( 'wp_enqueue_scripts' , 'appw_enqueue_stylesheet' );
-function appw_enqueue_stylesheet() {
-	wp_enqueue_style( APPW_PLUGIN_SLUG . '-style', plugins_url( '/css/app-style.css' , __FILE__ ) , array() , APPW_PLUGIN_VERSION );
-}
+global $adapter_post_preview_plugin;
+$adapter_post_preview_plugin = new Adapter_Post_Preview_Plugin();
