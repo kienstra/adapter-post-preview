@@ -52,7 +52,7 @@ class Adapter_Post_Preview_Plugin {
 	 * @return void.
 	 */
 	public function register_widget() {
-		register_widget( 'Adapter_Post_Widget' );
+		register_widget( 'AdapterPostPreview\Adapter_Post_Widget' );
 	}
 
 	/**

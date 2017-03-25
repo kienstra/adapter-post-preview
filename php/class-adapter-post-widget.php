@@ -10,7 +10,7 @@ namespace AdapterPostPreview;
 /**
  * Class Adapter_Post_Widget
  */
-class Adapter_Post_Widget extends WP_Widget {
+class Adapter_Post_Widget extends \WP_Widget {
 
 	public function __construct() {
 		$options = array(
@@ -24,7 +24,7 @@ class Adapter_Post_Widget extends WP_Widget {
 		$selected_post = isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		$selected_post_field_name = $this->get_field_name( 'selected_post' );
 		$selected_post_field_id = $this->get_field_id( 'selected_post' );
-		$query = new WP_Query( array(
+		$query = new \WP_Query( array(
 			'post_type'              => 'post',
 					      'orderby'	    	       => 'date',
 					      'posts_per_page' 	       => '100',
