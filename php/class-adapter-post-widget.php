@@ -161,16 +161,14 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$link_text = apply_filters( 'appw_link_text' , __( 'Read more' , 'adapter-post-preview' ) );
 		$button = '<a class="btn btn-primary btn-med" href="' . esc_url( $permalink ) . '">' . esc_html( $link_text ) . '</a>';
 
-		$markup = "<div class='post-preview'>
-				{$thumbnail}
-				{$title}
-				<div class='center-block excerpt-and-link'>
-					 {$filtered_excerpt}
-					 {$button}
-				</div>
-			   </div>\n";
-
-		return $markup;
+		return '<div class="post-preview">'
+					. wp_kses_post( $thumbnail )
+					. wp_kses_post( $title )
+					. '<div class="center-block excerpt-and-link">'
+						. wp_kses_post( $filtered_excerpt )
+						. wp_kses_post( $button )
+					. '</div>
+				</div>';
 	}
 
 	function is_valid_value( $input ) {
