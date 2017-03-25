@@ -141,8 +141,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	}
 
 	protected function get_single_post_preview_without_carousel( $post_id ) {
-		global $post;
-		if ( $post->ID === $post_id ) {
+		if ( get_the_ID() === $post_id ) {
 			// The post is already showing on the page, so there's no need for a preview of it.
 			return '';
 		}
