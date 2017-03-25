@@ -38,7 +38,7 @@ class APP_Carousel {
 	}
 
 	private function append_post_markup_to_inner_items( $post_markup ) {
-		$is_active = (0 == $this->slide_to_index ) ? 'active' : '';
+		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 		$this->carousel_inner_items .=
 		"<div class='item {$is_active}'>
 			{$post_markup}
@@ -46,7 +46,7 @@ class APP_Carousel {
 	}
 
 	private function append_to_carousel_indicators() {
-		$is_active = (0 == $this->slide_to_index ) ? 'active' : '';
+		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 
 		$this->carousel_indicators .=
 		"<li class='{$is_active}' data-target='#{$this->carousel_id}' data-slide-to='{$this->slide_to_index}' ></li>";
