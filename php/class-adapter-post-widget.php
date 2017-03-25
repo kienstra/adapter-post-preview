@@ -26,10 +26,10 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$selected_post_field_id = $this->get_field_id( 'selected_post' );
 		$query = new \WP_Query( array(
 			'post_type'              => 'post',
-					      'orderby'	    	       => 'date',
-					      'posts_per_page' 	       => '100',
-					      'no_found_rows'          => true,
-					      'update_post_term_cache' => false,
+						  'orderby'	    	       => 'date',
+						  'posts_per_page' 	       => '100',
+						  'no_found_rows'          => true,
+						  'update_post_term_cache' => false,
 		) );
 		?>
 		<p>
@@ -61,7 +61,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	public function update( $new_instance, $previous_instance ) {
 		$instance = $previous_instance;
 		$selected_post = isset( $new_instance['selected_post'] ) ? $new_instance['selected_post'] : '';
-		if ( appw_is_valid_value( $selected_post ) ) {
+		if ( $this->is_valid_value( $selected_post ) ) {
 			$instance['selected_post'] = $selected_post;
 		}
 		return $instance;
@@ -109,7 +109,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				if ( has_post_thumbnail() && ( get_the_id() !== $excluded_post_id ) ) {
-				        array_push( $appw_post_ids , absint( get_the_id() ) );
+						array_push( $appw_post_ids , absint( get_the_id() ) );
 				}
 			}
 			wp_reset_postdata();
@@ -136,7 +136,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	protected function get_markup_for_single_post( $post_id ) {
 		$post = get_post( $post_id );
 		setup_postdata( $post );
-		$post_markup = appw_get_single_post_preview_markup( $post );
+		$post_markup = $this->get_single_post_preview_markup( $post );
 		wp_reset_postdata();
 		return $post_markup;
 	}
@@ -151,34 +151,30 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $single_post_markup;
 	}
 
-}
-/* end class Adapter_Post_Widget */
+	function get_single_post_preview_markup( $post ) {
+		$thumbnail = get_the_post_thumbnail( $post->ID , 'medium' , array( 'class' => 'img-rounded img-responsive' ) );
+		$title = '<div class="post-title"><h2>' . esc_html( get_the_title( $post->ID ) ) . '</h2></div>';
+		$raw_excerpt = get_the_excerpt();
+		$excerpt_length = apply_filters( 'appw_excerpt_length' , 30 );
+		$filtered_excerpt = '<p>' . wp_trim_words( $raw_excerpt , $excerpt_length , '...' ) . '</p>';
+		$permalink = get_permalink( $post->ID );
+		$link_text = apply_filters( 'appw_link_text' , __( 'Read more' , 'adapter-post-preview' ) );
+		$button = '<a class="btn btn-primary btn-med" href="' . esc_url( $permalink ) . '">' . esc_html( $link_text ) . '</a>';
 
+		$markup = "<div class='post-preview'>
+				{$thumbnail}
+				{$title}
+				<div class='center-block excerpt-and-link'>
+					 {$filtered_excerpt}
+					 {$button}
+				</div>
+			   </div>\n";
 
-function appw_get_single_post_preview_markup( $post ) {
-	$thumbnail = get_the_post_thumbnail( $post->ID , 'medium' , array( 'class' => 'img-rounded img-responsive' ) );
-	$title = '<div class="post-title"><h2>' . esc_html( get_the_title( $post->ID ) ) . '</h2></div>';
+		return $markup;
+	}
 
-	$raw_excerpt = get_the_excerpt();
-	$excerpt_length = apply_filters( 'appw_excerpt_length' , 30 );
-	$filtered_excerpt = '<p>' . wp_trim_words( $raw_excerpt , $excerpt_length , '...' ) . '</p>';
+	function is_valid_value( $input ) {
+		return ( is_numeric( $input ) || ( 'appw_carousel_recent' == $input ) );
+	}
 
-	$permalink = get_permalink( $post->ID );
-	$link_text = apply_filters( 'appw_link_text' , __( 'Read more' , 'adapter-post-preview' ) );
-	$button = '<a class="btn btn-primary btn-med" href="' . esc_url( $permalink ) . '">' . esc_html( $link_text ) . '</a>';
-
-	$markup = "<div class='post-preview'>
-			{$thumbnail}
-			{$title}
-			<div class='center-block excerpt-and-link'>
-			     {$filtered_excerpt}
-			     {$button}
-			</div>
-		   </div>\n";
-
-	return $markup;
-}
-
-function appw_is_valid_value( $input ) {
-	return ( is_numeric( $input ) || ( 'appw_carousel_recent' == $input ) );
 }
