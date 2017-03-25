@@ -1,5 +1,15 @@
 <?php
+/**
+ * Class file for Adapter_Post_Widget
+ *
+ * @package AdapterPostPreview
+ */
 
+namespace AdapterPostPreview;
+
+/**
+ * Class Adapter_Post_Widget
+ */
 class Adapter_Post_Widget extends WP_Widget {
 
 	public function __construct() {

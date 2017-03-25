@@ -1,7 +1,16 @@
 <?php
+/**
+ * Class file for APP_Carousel
+ *
+ * @package AdapterPostPreview
+ */
 
-/*
- * Builds and echoes a modal carousel for each gallery
+namespace AdapterPostPreview;
+
+/**
+ * Class APP_Carousel.
+ *
+ * Builds and echoes a modal carousel for each gallery.
  */
 class APP_Carousel {
 

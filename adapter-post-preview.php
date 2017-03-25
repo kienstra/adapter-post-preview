@@ -1,4 +1,11 @@
 <?php
+/**
+ * Plugin bootstrap file.
+ *
+ * @package AdapterPostPreview
+ */
+
+namespace AdapterPostPreview;
 
 /*
 Plugin Name: Adapter Post Preview
