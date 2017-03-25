@@ -34,7 +34,7 @@ class Adapter_Post_Preview_Plugin {
 		require_once dirname( __FILE__ ) . '/class-adapter-post-widget.php';
 		add_action( 'init' , array( $this, 'plugin_localization' ) );
 		add_action( 'widgets_init' , array( $this, 'register_widget' ) );
-		add_action( 'wp_enqueue_scripts' , 'enqueue_styles' );
+		add_action( 'wp_enqueue_scripts' , array( $this, 'enqueue_styles' ) );
 	}
 
 	/**

@@ -15,7 +15,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	public function __construct() {
 		$options = array(
 		'classname' => 'adapter-post-preview',
-				  'description' => __( 'Show a carousel of recent posts, or a selected one' , 'adapter-post-preview' ),
+		'description' => __( 'Show a carousel of recent posts, or a selected one' , 'adapter-post-preview' ),
 		);
 		parent::__construct( 'adapter_post_preview' , __( 'Adapter Post Preview' , 'adapter-post-preview' ) , $options );
 	}
