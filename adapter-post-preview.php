@@ -18,8 +18,8 @@ load_plugin_textdomain( 'adapter-post-preview' , false , basename( dirname( __FI
 
 add_action( 'plugins_loaded' , 'appw_get_included_files' );
 function appw_get_included_files() {
-	include_once( plugin_dir_path( __FILE__ ) . 'includes/class-app-carousel.php' );
-	include_once( plugin_dir_path( __FILE__ ) . 'includes/class-adapter-post-widget.php' );
+	include_once( plugin_dir_path( __FILE__ ) . 'php/class-app-carousel.php' );
+	include_once( plugin_dir_path( __FILE__ ) . 'php/class-adapter-post-widget.php' );
 }
 
 add_action( 'widgets_init' , 'appw_register_widget' );
