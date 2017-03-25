@@ -25,11 +25,11 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$selected_post_field_name = $this->get_field_name( 'selected_post' );
 		$selected_post_field_id = $this->get_field_id( 'selected_post' );
 		$query = new \WP_Query( array(
-			'post_type'              => 'post',
-						  'orderby'	    	       => 'date',
-						  'posts_per_page' 	       => '100',
-						  'no_found_rows'          => true,
-						  'update_post_term_cache' => false,
+			'post_type' => 'post',
+			'orderby' => 'date',
+			'posts_per_page' => '100',
+			'no_found_rows' => true,
+			'update_post_term_cache' => false,
 		) );
 		?>
 		<p>
@@ -98,10 +98,10 @@ class Adapter_Post_Widget extends \WP_Widget {
 		global $post;
 		$excluded_post_id = isset( $post ) ? $post->ID : false;
 		$query = new WP_Query( array(
-					'post_type' => 'post',
-					'orderby' => 'date',
-					'posts_per_page' => absint( $posts_per_page ),
-					'no_found_rows' => true,
+			'post_type' => 'post',
+			'orderby' => 'date',
+			'posts_per_page' => absint( $posts_per_page ),
+			'no_found_rows' => true,
 		) );
 		$appw_post_ids = array();
 
@@ -109,7 +109,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				if ( has_post_thumbnail() && ( get_the_id() !== $excluded_post_id ) ) {
-						array_push( $appw_post_ids , absint( get_the_id() ) );
+					array_push( $appw_post_ids , absint( get_the_id() ) );
 				}
 			}
 			wp_reset_postdata();
