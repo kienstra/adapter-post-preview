@@ -154,14 +154,12 @@ class APP_Carousel {
 	 * @return string $markup Full Bootstrap carousel markup, with the posts.
 	 */
 	public function get() {
-		$controls = $this->maybe_get_controls();
-		$indicators = $this->maybe_get_indicators();
 		return '<div id="' . esc_attr( $this->carousel_id ) . '" class="carousel slide">'
-					. $indicators
+					. $this->maybe_get_indicators()
 				. '<div class="carousel-inner">'
 					. $this->carousel_inner_items
 				. '</div>'
-				. $controls
+				. $this->maybe_get_controls()
 			. '</div>';
 	}
 
