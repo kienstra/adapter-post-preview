@@ -31,10 +31,12 @@ class APP_Carousel {
 		$this->slide_to_index = 0;
 	}
 
-	public function add_post_markup( $post_markup ) {
-		$this->append_post_markup_to_inner_items( $post_markup );
-		$this->append_to_carousel_indicators();
-		$this->number_of_inner_items++;
+	public function add_post_markup( $post_preview_container ) {
+		foreach ( $post_preview_container as $post_preview ) {
+			$this->append_post_markup_to_inner_items( $post_preview );
+			$this->append_to_carousel_indicators();
+			$this->number_of_inner_items++;
+		}
 	}
 
 	private function append_post_markup_to_inner_items( $post_markup ) {

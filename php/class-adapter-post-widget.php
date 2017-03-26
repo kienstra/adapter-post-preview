@@ -31,6 +31,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 			'no_found_rows' => true,
 			'update_post_term_cache' => false,
 		) );
+
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $selected_post_field_id ); ?>">
@@ -46,13 +47,13 @@ class Adapter_Post_Widget extends \WP_Widget {
 					$query->the_post();
 					?>
 					<option value="<?php echo esc_attr( get_the_id() ); ?>" <?php selected( $selected_post, get_the_id(), true ); ?>>
-					<?php echo esc_html( get_the_title() ); ?>
+						<?php echo esc_html( get_the_title() ); ?>
 					</option>
 				<?php } ?>
-		   </select>
+			</select>
 			<?php wp_reset_postdata();
 			} else {
-				esc_html_e( 'No posts on your site. Please write one.', 'adapter-post-preview' );
+				esc_html_e( 'There are no posts on your site. Please write one.', 'adapter-post-preview' );
 			}
 			?>
 		</p>
@@ -81,14 +82,12 @@ class Adapter_Post_Widget extends \WP_Widget {
 		echo wp_kses_post( $args['before_widget'] ) . $markup . wp_kses_post( $args['after_widget'] );
 	}
 
-	protected function get_carousel_markup() {
+	public function get_carousel_markup() {
 		$post_preview_ids = $this->get_post_ids_for_carousel();
 		$post_preview_container = $this->get_all_post_preview_markup( $post_preview_ids );
-
 		$post_carousel = new APP_Carousel();
-		foreach ( $post_preview_container as $post_preview ) {
-			$post_carousel->add_post_markup( $post_preview );
-		}
+		$post_carousel->add_post_markup( $post_preview_container );
+
 		$markup = $post_carousel->get();
 		return $markup;
 	}
