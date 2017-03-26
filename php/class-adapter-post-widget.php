@@ -13,6 +13,13 @@ namespace AdapterPostPreview;
 class Adapter_Post_Widget extends \WP_Widget {
 
 	/**
+	 * Defult number of posts to diplay in the carousel.
+	 *
+	 * @var number
+	 */
+	public $default_number_of_posts_in_carousel = 5;
+
+	/**
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
@@ -125,13 +132,20 @@ class Adapter_Post_Widget extends \WP_Widget {
 	 * @return array $post_ids To output in the carousel.
 	 */
 	public function get_post_ids_for_carousel() {
-		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
+
+		/**
+		 * Filter the number of posts to display in the carousel.
+		 *
+		 * @param number $default_posts_per_page Initial number of posts on each page.
+		 */
+		$posts_in_carousel = apply_filters( 'bwp_number_of_posts_in_carousel' , $this->default_number_of_posts_in_carousel );
+
 		$current_post = get_post();
 		$excluded_post_id = isset( $current_post ) ? $current_post->ID : false;
 		$query = new \WP_Query( array(
 			'post_type' => 'post',
 			'orderby' => 'date',
-			'posts_per_page' => absint( $posts_per_page ),
+			'posts_per_page' => absint( $posts_in_carousel ),
 			'no_found_rows' => true,
 		) );
 		$appw_post_ids = array();
