@@ -119,12 +119,18 @@ class APP_Carousel {
 	/**
 	 * Conditionally get the carousel controls.
 	 *
-	 * @return void.
+	 * @return string $control_markup Bootstrap carousel control markup.
 	 */
 	public function maybe_get_controls() {
-		if ( $this->number_of_inner_items > 1 ) {
-			return "<a class='left carousel-control' href='#{$this->carousel_id}' data-slide='prev'><span class='glyphicon glyphicon-chevron-left'></span></a>
-				<a class='right carousel-control' href='#{$this->carousel_id}' data-slide='next'><span class='glyphicon glyphicon-chevron-right'></span></a>";
+		if ( 1 < $this->number_of_inner_items ) {
+			return '<a class="left carousel-control" href="' . esc_url( $this->carousel_id ) . '" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#' . esc_url( $this->carousel_id ) . '" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>';
+		} else {
+			return '';
 		}
 	}
 
