@@ -12,6 +12,9 @@ namespace AdapterPostPreview;
  */
 class Adapter_Post_Widget extends \WP_Widget {
 
+	/**
+	 * Instantiate the widget class.
+	 */
 	public function __construct() {
 		$options = array(
 		'classname' => 'adapter-post-preview',
@@ -20,6 +23,12 @@ class Adapter_Post_Widget extends \WP_Widget {
 		parent::__construct( 'adapter_post_preview' , __( 'Adapter Post Preview' , 'adapter-post-preview' ) , $options );
 	}
 
+	/**
+	 * Output the widget form.
+	 *
+	 * @param array $instance Widget data.
+	 * @return void.
+	 */
 	public function form( $instance ) {
 		$selected_post = isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		$selected_post_field_name = $this->get_field_name( 'selected_post' );
@@ -60,6 +69,13 @@ class Adapter_Post_Widget extends \WP_Widget {
 		<?php
 	}
 
+	/**
+	 * Update the widget instance, based on the form submission.
+	 *
+	 * @param array $new_instance New widget data, updated from form.
+	 * @param array $previous_instance Widget data, before being updated from form.
+	 * @return array $instance Widget data, updated based on form submission.
+	 */
 	public function update( $new_instance, $previous_instance ) {
 		$instance = $previous_instance;
 		$selected_post = isset( $new_instance['selected_post'] ) ? $new_instance['selected_post'] : '';
@@ -69,8 +85,15 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $instance;
 	}
 
+	/**
+	 * Echo the markup of the widget.
+	 *
+	 * @param array $args Widget display data.
+	 * @param array $instance Data for widget.
+	 * @return void.
+	 */
 	public function widget( $args, $instance ) {
-		$selected_post	= isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
+		$selected_post = isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		if ( ! $selected_post ) {
 			return;
 		} elseif ( 'appw_carousel_recent' === $selected_post ) {
@@ -82,14 +105,18 @@ class Adapter_Post_Widget extends \WP_Widget {
 		echo wp_kses_post( $args['before_widget'] ) . $markup . wp_kses_post( $args['after_widget'] );
 	}
 
+	/**
+	 * Get the full markup for a Bootstrap carousel of posts.
+	 *
+	 * @return string $markup Post carousel markup.
+	 */
 	public function get_carousel_markup() {
 		$post_preview_ids = $this->get_post_ids_for_carousel();
 		$post_preview_container = $this->get_all_post_preview_markup( $post_preview_ids );
 		$post_carousel = new APP_Carousel();
 		$post_carousel->add_post_markup( $post_preview_container );
 
-		$markup = $post_carousel->get();
-		return $markup;
+		return $post_carousel->get();
 	}
 
 	public function get_post_ids_for_carousel() {
