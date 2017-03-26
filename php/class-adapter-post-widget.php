@@ -126,8 +126,8 @@ class Adapter_Post_Widget extends \WP_Widget {
 	 */
 	public function get_post_ids_for_carousel() {
 		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
-		global $post;
-		$excluded_post_id = isset( $post ) ? $post->ID : false;
+		$current_post = get_post();
+		$excluded_post_id = isset( $current_post ) ? $current_post->ID : false;
 		$query = new \WP_Query( array(
 			'post_type' => 'post',
 			'orderby' => 'date',
