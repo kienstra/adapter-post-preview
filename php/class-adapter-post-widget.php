@@ -119,6 +119,11 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $post_carousel->get();
 	}
 
+	/**
+	 * Get post IDs to output in the Bootstrap carousel.
+	 *
+	 * @return array $post_ids To output in the carousel.
+	 */
 	public function get_post_ids_for_carousel() {
 		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
 		global $post;
@@ -143,6 +148,12 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $appw_post_ids;
 	}
 
+	/**
+	 * Get markup for all of the posts in the post preview.
+	 *
+	 * @param array $post_ids Posts to output in markup.
+	 * @return string $post_preview_container Markup of all post previews.
+	 */
 	public function get_all_post_preview_markup( $post_ids ) {
 		global $post;
 		if ( isset( $post ) ) {
@@ -159,14 +170,26 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $post_preview_container;
 	}
 
+	/**
+	 * Get markup for a single post preview.
+	 *
+	 * @param number $post_id The post with which to create the markup.
+	 * @return string $post_markup Post preview markup for the post ID.
+	 */
 	public function get_markup_for_single_post( $post_id ) {
-		$post = get_post( $post_id );
-		setup_postdata( $post );
-		$post_markup = $this->get_single_post_preview_markup( $post );
+		$post_to_get_markup = get_post( $post_id );
+		setup_postdata( $post_to_get_markup );
+		$post_markup = $this->get_single_post_preview_markup( $post_to_get_markup );
 		wp_reset_postdata();
 		return $post_markup;
 	}
 
+	/**
+	 * Get markup for a plain single post preview, without a carousel.
+	 *
+	 * @param number $post_id The post with which to create the markup.
+	 * @return string $single_post_markup Post preview markup.
+	 */
 	public function get_single_post_preview_without_carousel( $post_id ) {
 		if ( get_the_ID() === $post_id ) {
 			// The post is already showing on the page, so there's no need for a preview of it.
@@ -177,6 +200,12 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $single_post_markup;
 	}
 
+	/**
+	 * Get the markup for a single post preview.
+	 *
+	 * @param WP_Post object $post The post for which to get the markup.
+	 * @return string $markup Single post preview markup.
+	 */
 	public function get_single_post_preview_markup( $post ) {
 		$thumbnail = get_the_post_thumbnail( $post->ID , 'medium' , array( 'class' => 'img-rounded img-responsive' ) );
 		$title = '<div class="post-title"><h2>' . esc_html( get_the_title( $post->ID ) ) . '</h2></div>';
@@ -197,6 +226,12 @@ class Adapter_Post_Widget extends \WP_Widget {
 				</div>';
 	}
 
+	/**
+	 * Whether the value input to the form is valid.
+	 *
+	 * @param string $input The value submitted in the widget form, via the select element.
+	 * @return boolean $is_valid Whether the input value is valid, and should be saved in the database.
+	 */
 	public function is_valid_value( $input ) {
 		return ( is_numeric( $input ) || ( 'appw_carousel_recent' === $input ) );
 	}
