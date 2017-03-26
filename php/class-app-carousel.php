@@ -98,9 +98,9 @@ class APP_Carousel {
 	public function append_post_markup_to_inner_items( $post_markup ) {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 		$this->carousel_inner_items .=
-		"<div class='item {$is_active}'>
-			{$post_markup}
-		</div> \n";
+		'<div class="item ' . esc_attr( $is_active ) . '">'
+			. wp_kses_post( $post_markup )
+		. '</div>';
 	}
 
 	/**
