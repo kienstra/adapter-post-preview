@@ -39,7 +39,7 @@ class APP_Carousel {
 		}
 	}
 
-	private function append_post_markup_to_inner_items( $post_markup ) {
+	public function append_post_markup_to_inner_items( $post_markup ) {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 		$this->carousel_inner_items .=
 		"<div class='item {$is_active}'>
@@ -47,7 +47,7 @@ class APP_Carousel {
 		</div> \n";
 	}
 
-	private function append_to_carousel_indicators() {
+	public function append_to_carousel_indicators() {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 
 		$this->carousel_indicators .=
@@ -55,14 +55,14 @@ class APP_Carousel {
 		$this->slide_to_index++;
 	}
 
-	private function maybe_get_controls() {
+	public function maybe_get_controls() {
 		if ( $this->number_of_inner_items > 1 ) {
 			return "<a class='left carousel-control' href='#{$this->carousel_id}' data-slide='prev'><span class='glyphicon glyphicon-chevron-left'></span></a>
 				<a class='right carousel-control' href='#{$this->carousel_id}' data-slide='next'><span class='glyphicon glyphicon-chevron-right'></span></a>";
 		}
 	}
 
-	private function maybe_get_indicators() {
+	public function maybe_get_indicators() {
 		if ( $this->number_of_inner_items > 1 ) {
 			return "<ol class='carousel-indicators'>
 					{$this->carousel_indicators}
@@ -83,4 +83,3 @@ class APP_Carousel {
 			</div><!-- .carousel --> \n";
 	}
 }
-/* end class APP_Carousel */

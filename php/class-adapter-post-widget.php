@@ -92,7 +92,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $markup;
 	}
 
-	protected function get_post_ids_for_carousel() {
+	public function get_post_ids_for_carousel() {
 		$posts_per_page = apply_filters( 'bwp_number_of_posts_in_carousel' , 5 );
 		global $post;
 		$excluded_post_id = isset( $post ) ? $post->ID : false;
@@ -116,7 +116,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $appw_post_ids;
 	}
 
-	protected function get_all_post_preview_markup( $post_ids ) {
+	public function get_all_post_preview_markup( $post_ids ) {
 		global $post;
 		if ( isset( $post ) ) {
 			$post_currently_on_page = $post;
@@ -132,7 +132,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $post_preview_container;
 	}
 
-	protected function get_markup_for_single_post( $post_id ) {
+	public function get_markup_for_single_post( $post_id ) {
 		$post = get_post( $post_id );
 		setup_postdata( $post );
 		$post_markup = $this->get_single_post_preview_markup( $post );
@@ -140,7 +140,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $post_markup;
 	}
 
-	protected function get_single_post_preview_without_carousel( $post_id ) {
+	public function get_single_post_preview_without_carousel( $post_id ) {
 		if ( get_the_ID() === $post_id ) {
 			// The post is already showing on the page, so there's no need for a preview of it.
 			return '';
@@ -150,7 +150,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		return $single_post_markup;
 	}
 
-	function get_single_post_preview_markup( $post ) {
+	public function get_single_post_preview_markup( $post ) {
 		$thumbnail = get_the_post_thumbnail( $post->ID , 'medium' , array( 'class' => 'img-rounded img-responsive' ) );
 		$title = '<div class="post-title"><h2>' . esc_html( get_the_title( $post->ID ) ) . '</h2></div>';
 		$raw_excerpt = get_the_excerpt();
@@ -170,7 +170,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 				</div>';
 	}
 
-	function is_valid_value( $input ) {
+	public function is_valid_value( $input ) {
 		return ( is_numeric( $input ) || ( 'appw_carousel_recent' === $input ) );
 	}
 
