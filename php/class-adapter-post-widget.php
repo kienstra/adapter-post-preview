@@ -20,6 +20,13 @@ class Adapter_Post_Widget extends \WP_Widget {
 	public $default_number_of_posts_in_carousel = 5;
 
 	/**
+	 * Default word length of the excerpt.
+	 *
+	 * @var number
+	 */
+	public $default_excerpt_length = 30;
+
+	/**
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
@@ -224,7 +231,13 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$thumbnail = get_the_post_thumbnail( $post->ID , 'medium' , array( 'class' => 'img-rounded img-responsive' ) );
 		$title = '<div class="post-title"><h2>' . esc_html( get_the_title( $post->ID ) ) . '</h2></div>';
 		$raw_excerpt = get_the_excerpt();
-		$excerpt_length = apply_filters( 'appw_excerpt_length' , 30 );
+
+		/**
+		 * Filter the length of the excerpt in words.
+		 *
+		 * @param number $default_excerpt_length Initial number of words in the excerpt.
+		 */
+		$excerpt_length = apply_filters( 'appw_excerpt_length' , $this->default_excerpt_length );
 		$filtered_excerpt = '<p>' . wp_trim_words( $raw_excerpt , $excerpt_length , '...' ) . '</p>';
 		$permalink = get_permalink( $post->ID );
 		$link_text = apply_filters( 'appw_link_text' , __( 'Read more' , 'adapter-post-preview' ) );
