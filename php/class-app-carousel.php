@@ -14,12 +14,53 @@ namespace AdapterPostPreview;
  */
 class APP_Carousel {
 
-	protected static $instance_id = 1;
-	protected $carousel_id;
-	protected $carousel_inner_items;
-	protected $number_of_inner_items;
-	protected $carousel_indicators;
-	protected $slide_to_index;
+	/**
+	 * ID of the instance of this class.
+	 *
+	 * @var number
+	 */
+	public static $instance_id = 1;
+
+	/**
+	 * ID of the carousel.
+	 *
+	 * @var string
+	 */
+	public $carousel_id;
+
+	/**
+	 * Markup of the posts inside the carousel.
+	 *
+	 * @var string
+	 */
+	public $carousel_inner_items;
+
+	/**
+	 * Number of posts in the carousel.
+	 *
+	 * @var number
+	 */
+	public $number_of_inner_items;
+
+	/**
+	 * Markup of the carousel indicators.
+	 *
+	 * @var string
+	 */
+	public $carousel_indicators;
+
+	/**
+	 * Index of the post in the carousel.
+	 *
+	 * @var number
+	 */
+	public $slide_to_index;
+
+	/**
+	 * Markup of the post.
+	 *
+	 * @var string
+	 */
 	protected $post_markup;
 
 	public function __construct() {
