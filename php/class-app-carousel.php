@@ -63,6 +63,9 @@ class APP_Carousel {
 	 */
 	protected $post_markup;
 
+	/**
+	 * Instantiate the Bootstrap carousel.
+	 */
 	public function __construct() {
 		$this->carousel_id = 'appw-carousel-' . self::$instance_id;
 		self::$instance_id++;
@@ -72,6 +75,12 @@ class APP_Carousel {
 		$this->slide_to_index = 0;
 	}
 
+	/**
+	 * Add the post markup to the carousel container.
+	 *
+	 * @param string $post_preview_container Markup for the post preview.
+	 * @return void.
+	 */
 	public function add_post_markup( $post_preview_container ) {
 		foreach ( $post_preview_container as $post_preview ) {
 			$this->append_post_markup_to_inner_items( $post_preview );
@@ -80,6 +89,12 @@ class APP_Carousel {
 		}
 	}
 
+	/**
+	 * Add Bootstrap inner items markup for each post.
+	 *
+	 * @param string $post_markup Markup to append to the carousel inner items.
+	 * @return void.
+	 */
 	public function append_post_markup_to_inner_items( $post_markup ) {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 		$this->carousel_inner_items .=
@@ -88,6 +103,11 @@ class APP_Carousel {
 		</div> \n";
 	}
 
+	/**
+	 * Add markup to carousel indicators for each post.
+	 *
+	 * @return void.
+	 */
 	public function append_to_carousel_indicators() {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
 
@@ -96,13 +116,17 @@ class APP_Carousel {
 		$this->slide_to_index++;
 	}
 
+	/**
+	 * Conditionally get the carousel controls.
+	 *
+	 * @return void.
+	 */
 	public function maybe_get_controls() {
 		if ( $this->number_of_inner_items > 1 ) {
 			return "<a class='left carousel-control' href='#{$this->carousel_id}' data-slide='prev'><span class='glyphicon glyphicon-chevron-left'></span></a>
 				<a class='right carousel-control' href='#{$this->carousel_id}' data-slide='next'><span class='glyphicon glyphicon-chevron-right'></span></a>";
 		}
 	}
-
 
 	/**
 	 * Conditionally return Bootstrap indicator markup.
@@ -119,6 +143,11 @@ class APP_Carousel {
 		}
 	}
 
+	/**
+	 * Get the full markup of the Bootstrap carousel.
+	 *
+	 * @return string $markup Full Bootstrap carousel markup, with the posts.
+	 */
 	public function get() {
 		$controls = $this->maybe_get_controls();
 		$indicators = $this->maybe_get_indicators();
@@ -131,4 +160,5 @@ class APP_Carousel {
 				{$controls}
 			</div><!-- .carousel --> \n";
 	}
+
 }
