@@ -103,11 +103,19 @@ class APP_Carousel {
 		}
 	}
 
+
+	/**
+	 * Conditionally return Bootstrap indicator markup.
+	 *
+	 * @return string $indicator_markup Bootstrap carousel indicator markup.
+	 */
 	public function maybe_get_indicators() {
-		if ( $this->number_of_inner_items > 1 ) {
-			return "<ol class='carousel-indicators'>
-					{$this->carousel_indicators}
-				</ol>\n";
+		if ( 1 < $this->number_of_inner_items ) {
+			return '<ol class="carousel-indicators">'
+						. $this->carousel_indicators
+				. '</ol>';
+		} else {
+			return '';
 		}
 	}
 
