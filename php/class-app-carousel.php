@@ -121,7 +121,7 @@ class APP_Carousel {
 	 * @return string $control_markup Bootstrap carousel control markup.
 	 */
 	public function maybe_get_controls() {
-		if ( 1 < $this->number_of_inner_items ) {
+		if ( $this->has_more_than_one_post() ) {
 			return '<a class="left carousel-control" href="' . esc_url( $this->carousel_id ) . '" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</a>
@@ -139,7 +139,7 @@ class APP_Carousel {
 	 * @return string $indicator_markup Bootstrap carousel indicator markup.
 	 */
 	public function maybe_get_indicators() {
-		if ( 1 < $this->number_of_inner_items ) {
+		if ( $this->has_more_than_one_post() ) {
 			return '<ol class="carousel-indicators">'
 						. $this->carousel_indicators
 				. '</ol>';
@@ -161,6 +161,15 @@ class APP_Carousel {
 				. '</div>'
 				. $this->maybe_get_controls()
 			. '</div>';
+	}
+
+	/**
+	 * Whether the carousel has more than a single post.
+	 *
+	 * @return boolean $has_more_than_one Whether the Bootstrap carousel has more than one post.
+	 */
+	public function has_more_than_one_post() {
+		return ( 1 < $this->number_of_inner_items );
 	}
 
 }
