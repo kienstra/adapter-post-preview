@@ -110,9 +110,8 @@ class APP_Carousel {
 	 */
 	public function append_to_carousel_indicators() {
 		$is_active = ( 0 === $this->slide_to_index ) ? 'active' : '';
-
-		$this->carousel_indicators .=
-		"<li class='{$is_active}' data-target='#{$this->carousel_id}' data-slide-to='{$this->slide_to_index}' ></li>";
+		$list_item = '<li class="' . esc_attr( $is_active ) . '" data-target="#' . esc_attr( $this->carousel_id ) . '" data-slide-to="' . esc_attr( $this->slide_to_index ) . '" ></li>';
+		$this->carousel_indicators .= $list_item;
 		$this->slide_to_index++;
 	}
 
@@ -157,14 +156,13 @@ class APP_Carousel {
 	public function get() {
 		$controls = $this->maybe_get_controls();
 		$indicators = $this->maybe_get_indicators();
-		return "<div id='{$this->carousel_id}' class='carousel slide'>
-				{$indicators}
-				<!-- Posts -->
-				<div class='carousel-inner'>
-					{$this->carousel_inner_items}
-				</div>
-				{$controls}
-			</div><!-- .carousel --> \n";
+		return '<div id="' . esc_attr( $this->carousel_id ) . '" class="carousel slide">'
+					. $indicators
+				. '<div class="carousel-inner">'
+					. $this->carousel_inner_items
+				. '</div>'
+				. $controls
+			. '</div>';
 	}
 
 }
