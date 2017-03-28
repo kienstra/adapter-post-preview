@@ -13,7 +13,21 @@ namespace AdapterPostPreview;
 class Adapter_Post_Widget extends \WP_Widget {
 
 	/**
-	 * Defult number of posts to diplay in the carousel.
+	 * Plugin slug.
+	 *
+	 * @var string
+	 */
+	public $plugin_slug = 'adapter-post-preview';
+
+	/**
+	 * Plugin version.
+	 *
+	 * @var string
+	 */
+	public $plugin_version = '1.0.2';
+
+	/**
+	 * Default number of posts to display in the carousel.
 	 *
 	 * @var number
 	 */
@@ -31,10 +45,26 @@ class Adapter_Post_Widget extends \WP_Widget {
 	 */
 	public function __construct() {
 		$options = array(
-		'classname' => 'adapter-post-preview',
-		'description' => __( 'Show a carousel of recent posts, or a selected one' , 'adapter-post-preview' ),
+			'classname' => 'adapter-post-preview',
+			'description' => __( 'Show a carousel of recent posts, or a selected one.' , 'adapter-post-preview' ),
+			'customize_selective_refresh' => true,
 		);
 		parent::__construct( 'adapter_post_preview' , __( 'Adapter Post Preview' , 'adapter-post-preview' ) , $options );
+
+		// Only enqueue the styling if the widget appears in a sidebar, or if it's in the Customizer.
+		// Props Weston Ruter.
+		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		}
+	}
+
+	/**
+	 * Enqueue widget styling.
+	 *
+	 * @return void.
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_style( $this->plugin_slug . '-style', plugins_url( $this->plugin_slug . '/css/app-style.css' ), array(), $this->plugin_version );
 	}
 
 	/**
@@ -240,6 +270,10 @@ class Adapter_Post_Widget extends \WP_Widget {
 		$excerpt_length = apply_filters( 'appw_excerpt_length' , $this->default_excerpt_length );
 		$filtered_excerpt = '<p>' . wp_trim_words( $raw_excerpt , $excerpt_length , '...' ) . '</p>';
 		$permalink = get_permalink( $post->ID );
+
+		/**
+		 * Filter the text in the button to view the full post page.
+		 */
 		$link_text = apply_filters( 'appw_link_text' , __( 'Read more' , 'adapter-post-preview' ) );
 		$button = '<a class="btn btn-primary btn-med" href="' . esc_url( $permalink ) . '">' . esc_html( $link_text ) . '</a>';
 
