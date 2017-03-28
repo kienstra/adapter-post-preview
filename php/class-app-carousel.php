@@ -122,10 +122,10 @@ class APP_Carousel {
 	 */
 	public function maybe_get_controls() {
 		if ( $this->has_more_than_one_post() ) {
-			return '<a class="left carousel-control" href="' . esc_url( $this->carousel_id ) . '" data-slide="prev">
+			return '<a class="left carousel-control" href="#' . esc_attr( $this->carousel_id ) . '" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</a>
-					<a class="right carousel-control" href="#' . esc_url( $this->carousel_id ) . '" data-slide="next">
+					<a class="right carousel-control" href="#' . esc_attr( $this->carousel_id ) . '" data-slide="next">
 						<span class="glyphicon glyphicon-chevron-right"></span>
 					</a>';
 		} else {
