@@ -24,7 +24,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	 *
 	 * @var string
 	 */
-	public $plugin_version = '1.0.2';
+	public $plugin_version = '1.0.3';
 
 	/**
 	 * Default number of posts to display in the carousel.

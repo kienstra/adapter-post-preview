@@ -6,8 +6,8 @@ Show your best posts in any widget area. Creates a widget with a post preview, o
 **Contributors:** [ryankienstra](https://profiles.wordpress.org/ryankienstra)  
 **Tags:** [widgets](https://wordpress.org/plugins/tags/widgets), [post](https://wordpress.org/plugins/tags/post), [Bootstrap](https://wordpress.org/plugins/tags/Bootstrap), [mobile](https://wordpress.org/plugins/tags/mobile), [responsive](https://wordpress.org/plugins/tags/responsive)  
 **Requires at least:** 3.8  
-**Tested up to:** 4.1   
-**Stable tag:** 1.0.2  
+**Tested up to:** 4.7.3  
+**Stable tag:** 1.0.3  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/  
 
@@ -45,6 +45,9 @@ function my_appw_link_text( $text ) {
 
 ## Changelog ##
 
+### 1.0.3 ###
+* Security improvements, including widget output
+
 ### 1.0.2 ###
 * Fixed height in mobile display.
 
@@ -56,6 +59,9 @@ function my_appw_link_text( $text ) {
 
 
 ## Upgrade Notice ##
+
+### 1.0.3 ###
+Please upgrade for the security improvements in the widget output.
 
 ### 1.0.2 ###
 Upgrade if you use the carousel. It now has enough height on mobile devices.

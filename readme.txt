@@ -3,8 +3,8 @@ Contributors: ryankienstra
 Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Tags: widgets, post, Bootstrap, mobile, responsive, 
 Requires at least: 3.8
-Tested up to: 4.1 
-Stable tag: 1.0.2
+Tested up to: 4.7.3
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ function my_appw_link_text( $text ) {
 
 == Changelog ==
 
+= 1.0.3 =
+* Security improvements, including widget output
+
 = 1.0.2 =
 * Fixed height in mobile display. 
 
@@ -57,6 +60,9 @@ function my_appw_link_text( $text ) {
 * First version.
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Please upgrade for the security improvements in the widget output.
 
 = 1.0.2 =
 Upgrade if you use the carousel. It now has enough height on mobile devices.

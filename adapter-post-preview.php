@@ -12,7 +12,7 @@ Plugin Name: Adapter Post Preview
 Plugin URI: www.ryankienstra.com/plugins/adapter-post-preview
 Description: Create a widget with a post's featured image, headline, excerpt, and link. If you have Bootstrap 3, make widget with a carousel of recent posts.
 
-Version: 1.0.2
+Version: 1.0.3
 Author: Ryan Kienstra
 Author URI: www.ryankienstra.com
 License: GPL2
