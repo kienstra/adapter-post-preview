@@ -46,7 +46,7 @@ function my_appw_link_text( $text ) {
 ## Changelog ##
 
 ### 1.0.3 ###
-* Security improvements, including widget output
+* Security improvements, including widget output.
 
 ### 1.0.2 ###
 * Fixed height in mobile display.

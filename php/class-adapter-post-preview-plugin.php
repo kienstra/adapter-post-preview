@@ -13,6 +13,13 @@ namespace AdapterPostPreview;
 class Adapter_Post_Preview_Plugin {
 
 	/**
+	 * Plugin slug.
+	 *
+	 * @var string
+	 */
+	public $plugin_slug = 'adapter-post-preview';
+
+	/**
 	 * Construct the class.
 	 */
 	public function __construct() {
@@ -28,7 +35,7 @@ class Adapter_Post_Preview_Plugin {
 	 * @return void.
 	 */
 	public function plugin_localization() {
-		load_plugin_textdomain( 'adapter-post-preview' , false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( $this->plugin_slug, false, $this->plugin_slug . '/languages' );
 	}
 
 	/**
