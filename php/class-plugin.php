@@ -1,6 +1,6 @@
 <?php
 /**
- * Main class for the Adapter Post Preview plugin
+ * Main class for the Adapter Post Preview plugin.
  *
  * @package AdapterPostPreview
  */
@@ -8,7 +8,7 @@
 namespace AdapterPostPreview;
 
 /**
- * Main plugin class
+ * Main plugin class.
  */
 class Plugin {
 
@@ -41,9 +41,9 @@ class Plugin {
 	public $widget_class = __NAMESPACE__ . '\Adapter_Post_Widget';
 
 	/**
-	 * URL of the plugin.
+	 * The URL of the plugin.
 	 *
-	 * @var object
+	 * @var string
 	 */
 	public $location;
 
@@ -149,7 +149,12 @@ class Plugin {
 	 * @return void
 	 */
 	public function enqueue_style() {
-		wp_enqueue_style( self::STYLE, $this->location . '/css/' . self::STYLE . '.css', array(), self::VERSION );
+		wp_enqueue_style(
+			self::STYLE,
+			$this->location . '/css/' . self::STYLE . '.css',
+			array(),
+			self::VERSION
+		);
 	}
 
 }
