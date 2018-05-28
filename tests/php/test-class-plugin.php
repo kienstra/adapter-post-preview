@@ -48,7 +48,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 */
 	public function test_init() {
 		$this->plugin->init();
-		$this->assertTrue( class_exists( $this->plugin->widget_class ) );
+		$this->assertTrue( class_exists( __NAMESPACE__ . '\\' . Plugin::WIDGET_CLASS ) );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	public function test_register_widget() {
 		global $wp_widget_factory;
 		$this->plugin->register_widget();
-		$this->assertTrue( isset( $wp_widget_factory->widgets[ $this->plugin->widget_class ] ) );
+		$this->assertTrue( isset( $wp_widget_factory->widgets[ __NAMESPACE__ . '\\' . Plugin::WIDGET_CLASS ] ) );
 	}
 
 	/**

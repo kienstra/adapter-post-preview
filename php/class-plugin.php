@@ -38,7 +38,7 @@ class Plugin {
 	 *
 	 * @var string
 	 */
-	public $widget_class = __NAMESPACE__ . '\Adapter_Post_Widget';
+	const WIDGET_CLASS = 'Adapter_Post_Widget';
 
 	/**
 	 * The URL of the plugin.
@@ -140,7 +140,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function register_widget() {
-		register_widget( $this->widget_class );
+		register_widget( __NAMESPACE__ . '\\' . self::WIDGET_CLASS );
 	}
 
 	/**
