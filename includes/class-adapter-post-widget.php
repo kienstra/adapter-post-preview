@@ -1,6 +1,16 @@
 <?php
+/**
+ * The Adapter Post widget.
+ *
+ * @package AdapterPostPreview
+ */
 
-class Adapter_Post_Widget extends WP_Widget {
+namespace AdapterPostPreview;
+
+/**
+ * The plugin's widget.
+ */
+class Adapter_Post_Widget extends \WP_Widget {
 
 	public function __construct() {
 		$options = array( 'classname' => 'adapter-post-preview' ,
@@ -10,14 +20,15 @@ class Adapter_Post_Widget extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$selected_post = isset( $instance[ 'selected_post' ] ) ? $instance[ 'selected_post' ] : "";
+		$selected_post            = isset( $instance['selected_post'] ) ? $instance['selected_post'] : '';
 		$selected_post_field_name = $this->get_field_name( 'selected_post' );
-		$selected_post_field_id = $this->get_field_id( 'selected_post' );
-		$query = new WP_Query( array( 'post_type'              => 'post' , 
-					      'orderby'	    	       => 'date' ,
-					      'posts_per_page' 	       => '100' ,
-					      'no_found_rows'          => true ,
-					      'update_post_term_cache' => false ,
+		$selected_post_field_id   = $this->get_field_id( 'selected_post' );
+		$query                    = new \WP_Query( array(
+			'post_type'              => 'post',
+			'orderby'                => 'date',
+			'posts_per_page'         => '100',
+			'no_found_rows'          => true,
+			'update_post_term_cache' => false,
 		) );
 		?>
 		<p>
@@ -29,7 +40,8 @@ class Adapter_Post_Widget extends WP_Widget {
 				<option value="appw_carousel_recent" <?php selected( $selected_post , 'appw_carousel_recent' , true ); ?>>
 					<?php esc_html_e( 'Carousel of recent posts' , 'adapter-post-preview' ); ?>
 				</option>
-				<?php while ( $query->have_posts() ) : 
+				<?php
+				while ( $query->have_posts() ) :
 					$query->the_post();
 					?>
 						<option value="<?php echo esc_attr( get_the_id() ); ?>" <?php selected( $selected_post , get_the_id() , true ); ?>>
@@ -40,7 +52,7 @@ class Adapter_Post_Widget extends WP_Widget {
 			<?php wp_reset_postdata();
 		else :
 			esc_html_e( 'No posts on your site. Please write one.' , 'adapter-post-preview' );
-		endif; 
+		endif;
 		?>
 		</p>
 		<?php
@@ -66,7 +78,7 @@ class Adapter_Post_Widget extends WP_Widget {
 		else {
 			$markup = $this->get_single_post_preview_without_carousel( $selected_post );
 		}
-		
+
 		echo $args[ 'before_widget' ] . $markup . $args[ 'after_widget' ];
 	}
 
