@@ -1,14 +1,14 @@
 === Adapter Post Preview ===
 Contributors: ryankienstra
 Donate link: http://jdrf.org/get-involved/ways-to-donate/
-Tags: widgets, post, Bootstrap, mobile, responsive, 
+Tags: widgets, post, Bootstrap, mobile, responsive,
 Requires at least: 3.8
-Tested up to: 4.1 
+Tested up to: 4.1
 Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Show your best posts in any widget area. Creates a widget with a post preview, or a carousel of the most recent posts. 
+Show your best posts in any widget area. Creates a widget with a post preview, or a carousel of the most recent posts.
 
 == Description ==
 
@@ -30,7 +30,7 @@ Show your best posts in any widget area. Creates a widget with a post preview, o
 
 = What does this require? =
 
-The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons. 
+The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons.
 
 = How can I change the text in the post link? =
 
@@ -39,7 +39,7 @@ Put the following in your functions.php file:
 function my_appw_link_text( $text ) {
 	 return 'Keep reading'; // or your own text
 }`
- 
+
 == Screenshots ==
 
 1. A "Post Preview" widget in the sidebar.
@@ -47,8 +47,11 @@ function my_appw_link_text( $text ) {
 
 == Changelog ==
 
+= 1.1 (Unreleased) =
+* Add PHPUnit testing to ensure stability. See [#2](https://github.com/kienstra/adapter-post-preview/issues/2).
+
 = 1.0.2 =
-* Fixed height in mobile display. 
+* Fixed height in mobile display.
 
 = 1.0.1 =
 * Fixed a bug in Internet Explorer display of the carousel.

@@ -1,7 +1,14 @@
 <?php
+/**
+ * Outputs a carousel.
+ *
+ * @package AdapterPostPreview
+ */
+
+namespace AdapterPostPreview;
 
 /*
- * Builds and echoes a modal carousel for each gallery
+ * Outputs a carousel for the widget.
  */
 class APP_Carousel {
 
