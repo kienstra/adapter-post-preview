@@ -59,7 +59,9 @@ class Plugin {
 	 *
 	 * @var array
 	 */
-	public $classes = array();
+	public $classes = array(
+		'adapter-post-widget',
+	);
 
 	/**
 	 * Gets the instance of this plugin.
@@ -85,7 +87,6 @@ class Plugin {
 	 */
 	public function init() {
 		$this->load_files();
-		$this->init_classes();
 		$this->location = plugins_url( self::SLUG );
 		$this->add_actions();
 	}
@@ -102,16 +103,6 @@ class Plugin {
 
 		// @todo: move these classes to php/ and use the logic above to include them.
 		include_once dirname( __DIR__ ) . '/includes/class-app-carousel.php';
-		include_once dirname( __DIR__ ) . '/includes/class-adapter-post-widget.php';
-	}
-
-	/**
-	 * Instantiates the plugin classes, and calls their init() methods.
-	 *
-	 * @return void
-	 */
-	public function init_classes() {
-		$this->components = new \stdClass();
 	}
 
 	/**

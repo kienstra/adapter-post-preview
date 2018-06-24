@@ -38,7 +38,7 @@ class APP_Carousel {
 	private function append_post_markup_to_inner_items( $post_markup ) {
 		$is_active = (0 == $this->slide_to_index ) ? 'active' : '';
 		$this->carousel_inner_items .=
-		"<div class='item {$is_active}'>
+		"<div class='item carousel-item {$is_active}'>
 			{$post_markup}
 		</div> \n";
 	}
@@ -69,7 +69,7 @@ class APP_Carousel {
 	public function get() {
 		$controls = $this->maybe_get_controls();
 		$indicators = $this->maybe_get_indicators();
-		return "<div id='{$this->carousel_id}' class='carousel slide'>
+		return "<div id='{$this->carousel_id}' class='carousel slide' data-ride='carousel'>
 				{$indicators}
 				<!-- Posts -->
 				<div class='carousel-inner'>
