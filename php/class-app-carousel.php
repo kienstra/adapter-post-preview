@@ -12,21 +12,17 @@ namespace AdapterPostPreview;
  */
 class APP_Carousel {
 
-	protected static $instance_id = 1;
-	protected $carousel_id;
-	protected $carousel_inner_items;
-	protected $number_of_inner_items;
-	protected $carousel_indicators;
-	protected $slide_to_index;
-	protected $post_markup;
+	public static $instance_id = 1;
+	public $carousel_id;
+	public $carousel_inner_items = '';
+	public $number_of_inner_items = 0;
+	public $carousel_indicators = '';
+	public $slide_to_index = 0;
+	public $post_markup;
 
 	public function __construct() {
 		$this->carousel_id = 'appw-carousel-' . self::$instance_id;
 		self::$instance_id++;
-		$this->carousel_inner_items = '';
-		$this->number_of_inner_items = 0;
-		$this->carousel_indicators = '';
-		$this->slide_to_index = 0;
 	}
 
 	public function add_post_markup( $post_markup ) {
