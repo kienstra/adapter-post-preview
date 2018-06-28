@@ -15,7 +15,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	/**
 	 * Instance of plugin.
 	 *
-	 * @var object
+	 * @var Plugin
 	 */
 	public $plugin;
 
@@ -59,7 +59,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	public function test_load_files() {
 		$classes = array(
 			'Adapter_Post_Widget',
-			'APP_Carousel',
+			'Carousel',
 		);
 
 		foreach ( $classes as $class ) {

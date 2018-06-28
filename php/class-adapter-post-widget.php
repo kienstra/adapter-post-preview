@@ -141,10 +141,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 	 */
 	public function get_carousel_markup() {
 		$post_previews = $this->get_all_post_preview_markup( $this->get_post_ids_for_carousel() );
-		$post_carousel = new APP_Carousel();
-		foreach ( $post_previews as $post_preview ) {
-			$post_carousel->add_post_markup( $post_preview );
-		}
+		$post_carousel = new Carousel( $post_previews );
 		return $post_carousel->get();
 	}
 
