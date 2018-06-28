@@ -68,16 +68,6 @@ class Test_Plugin extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Test init_classes().
-	 *
-	 * @covers Plugin::init_classes().
-	 */
-	public function test_init_classes() {
-		$this->plugin->init();
-		$this->markTestIncomplete( 'Not yet implemented' );
-	}
-
-	/**
 	 * Test add_actions().
 	 *
 	 * @covers Plugin::add_actions().
