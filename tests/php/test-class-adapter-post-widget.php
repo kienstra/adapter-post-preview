@@ -141,7 +141,7 @@ class Test_Adapter_Post_Widget extends \WP_UnitTestCase {
 		$output = ob_get_clean();
 		$this->assertContains( $before_widget, $output );
 		$this->assertContains( $after_widget, $output );
-		$this->assertContains( '<div class=\'carousel-inner\'>', $output );
+		$this->assertContains( '<div class="carousel-inner">', $output );
 
 		// This should display a single post preview.
 		$mock_post_id = reset( $this->mock_post_ids );

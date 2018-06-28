@@ -59,7 +59,7 @@ class Plugin {
 	 *
 	 * @var array
 	 */
-	public $classes = array( 'adapter-post-widget', 'app-carousel' );
+	public $classes = array( 'adapter-post-widget', 'carousel' );
 
 	/**
 	 * Gets the instance of this plugin.
