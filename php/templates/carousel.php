@@ -19,9 +19,9 @@ namespace AdapterPostPreview;
 				$active_class = ( 0 === $i ) ? 'active' : '';
 				?>
 				<li class="<?php echo esc_attr( $active_class ); ?>" data-target="#<?php echo esc_attr( $this->carousel_id ); ?>" data-slide-to="<?php echo esc_attr( $i ); ?>"></li>
-			<?php
+				<?php
 			endfor;
-		?>
+			?>
 		</ol>
 	<?php endif; ?>
 	<div class="carousel-inner">
@@ -36,7 +36,7 @@ namespace AdapterPostPreview;
 			<?php
 			$i++;
 		endforeach;
-	?>
+		?>
 	</div>
 	<?php if ( $number_of_post_previews > 1 ) : ?>
 		<a class="left carousel-control" href="#<?php echo esc_attr( $this->carousel_id ); ?>" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>

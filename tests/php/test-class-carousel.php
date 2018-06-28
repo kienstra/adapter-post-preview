@@ -43,7 +43,7 @@ class Test_Carousel extends \WP_UnitTestCase {
 	 */
 	public function test___construct() {
 		$this->assertEquals( __NAMESPACE__ . '\\Carousel', get_class( $this->instance ) );
-		$this->assertEquals( 'appw-carousel-' . strval( $this->instance::$instance_id - 1 ), $this->instance->carousel_id );
+		$this->assertEquals( 'appw-carousel-' . strval( Carousel::$instance_id - 1 ), $this->instance->carousel_id );
 	}
 
 	/**
