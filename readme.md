@@ -17,7 +17,7 @@ Show your best posts in any widget area. Creates a widget with a post preview, o
 ## Description ##
 
 * Creates a widget with the post's featured image, headline, excerpt, and link.
-* To see the carousel of posts, you must have Twitter Bootstrap 3 and Glyphicons.
+* To see the carousel of posts, you must have Bootstrap 3 or later and Glyphicons.
 * Hides the widget if the post is a single post on the page. For example, if you are on the "Hello World" page, you won't see the widget with a preview of "Hello World."
 * The carousel won't show posts that don't have an image.
 
@@ -33,7 +33,7 @@ Show your best posts in any widget area. Creates a widget with a post preview, o
 ## Frequently Asked Questions ##
 
 ### What does this require? ###
-The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons.
+The carousel of recent posts requires Bootstrap 3 or later and Glyphicons.
 
 ### How can I change the text in the post link? ###
 Put the following in your functions.php file:
