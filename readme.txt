@@ -35,7 +35,7 @@ The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons.
 = How can I change the text in the post link? =
 
 Put the following in your functions.php file:
-`apply_filters( 'appw_link_text', function( $text ) { return 'Keep reading'; } ) // or your own text`
+`add_filter( 'appw_link_text', function( $text ) { return 'Keep reading'; } ) // or your own text`
 
 == Screenshots ==
 
