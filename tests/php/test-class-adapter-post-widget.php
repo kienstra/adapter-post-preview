@@ -135,13 +135,16 @@ class Test_Adapter_Post_Widget extends \WP_UnitTestCase {
 		$this->create_mock_posts();
 
 		// This should display a carousel.
-		$instance = array( Adapter_Post_Widget::SELECTED_POST => Adapter_Post_Widget::DISPLAY_CAROUSEL );
+		$instance     = array( Adapter_Post_Widget::SELECTED_POST => Adapter_Post_Widget::DISPLAY_CAROUSEL );
+		$mock_post_id = end( $this->mock_post_ids );
+		$latest_post  = get_post( $mock_post_id );
 		ob_start();
 		$this->widget->widget( $args, $instance );
 		$output = ob_get_clean();
 		$this->assertContains( $before_widget, $output );
 		$this->assertContains( $after_widget, $output );
 		$this->assertContains( '<div class="carousel-inner">', $output );
+		$this->assertContains( wp_trim_words( $latest_post->post_content ), $output );
 
 		// This should display a single post preview.
 		$mock_post_id = reset( $this->mock_post_ids );
@@ -210,12 +213,13 @@ class Test_Adapter_Post_Widget extends \WP_UnitTestCase {
 		$this->create_mock_posts();
 		$mock_post_id = reset( $this->mock_post_ids );
 		$mock_post    = get_post( $mock_post_id );
+		$content      = $mock_post->post_content;
 		$markup       = $this->widget->get_single_post_preview_markup( $mock_post );
 
 		$expected_thumbnail = get_the_post_thumbnail( $mock_post_id, 'medium', array( 'class' => 'img-rounded img-responsive' ) );
 		$this->assertContains( $expected_thumbnail, $markup );
 		$this->assertContains( '<div class="post-title"><h2>', $markup );
-		$this->assertContains( wp_trim_words( get_the_excerpt( $mock_post_id ), 30, '...' ), $markup );
+		$this->assertContains( wp_trim_words( $content, 30, '...' ), $markup );
 		$this->assertContains( get_permalink( $mock_post_id ), $markup );
 		$this->assertContains( '<a class="btn btn-primary btn-med"', $markup );
 	}

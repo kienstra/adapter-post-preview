@@ -41,6 +41,13 @@ class Adapter_Post_Widget extends \WP_Widget {
 	const NUMBER_OF_POSTS_IN_CAROUSEL = 5;
 
 	/**
+	 * The default excerpt length.
+	 *
+	 * @var int
+	 */
+	const DEFAULT_EXCERPT_LENGTH = 30;
+
+	/**
 	 * Adapter_Post_Widget constructor.
 	 */
 	public function __construct() {
@@ -209,7 +216,7 @@ class Adapter_Post_Widget extends \WP_Widget {
 		 *
 		 * @param int
 		 */
-		$excerpt_length = apply_filters( 'appw_excerpt_length', 30 );
+		$excerpt_length = apply_filters( 'appw_excerpt_length', self::DEFAULT_EXCERPT_LENGTH );
 
 		/**
 		 * The text for the single post preview link, which leads to the URL of the post.
@@ -218,13 +225,23 @@ class Adapter_Post_Widget extends \WP_Widget {
 		 */
 		$link_text = apply_filters( 'appw_link_text', __( 'Read more', 'adapter-post-preview' ) );
 
+		$text = strip_shortcodes( $post->post_content );
+
+		/** This filter is documented in wp-includes/post-template.php */
+		$text = apply_filters( 'the_content', $text );
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		/** This filter is documented in wp-includes/formatting.php */
+		$excerpt_more = apply_filters( 'excerpt_more', ' [&hellip;]' );
+		$raw_excerpt  = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+
 		ob_start();
 		?>
 		<div class="post-preview">
 			<?php echo get_the_post_thumbnail( $post->ID, 'medium', array( 'class' => 'img-rounded img-responsive' ) ); ?>
 			<div class="post-title"><h2><?php echo esc_html( get_the_title( $post->ID ) ); ?></h2></div>
 			<div class='center-block excerpt-and-link'>
-				<p><?php echo wp_kses_post( wp_trim_words( get_the_excerpt( $post->ID ), $excerpt_length, '...' ) ); ?></p>
+				<p><?php echo wp_kses_post( wp_trim_words( $raw_excerpt, $excerpt_length, '...' ) ); ?></p>
 				<a class="btn btn-primary btn-med" href="<?php echo esc_url( get_permalink( $post->ID ) ); ?>"><?php echo esc_html( $link_text ); ?></a>
 			</div>
 		</div>
