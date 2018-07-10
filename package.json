@@ -1,6 +1,6 @@
 {
   "name": "adapter-post-preview",
-  "version": "1.1.0",
+  "version": "1.1",
   "description": "Create a widget with a post's featured image, headline, excerpt, and link.",
   "main": "index.js",
   "scripts": {

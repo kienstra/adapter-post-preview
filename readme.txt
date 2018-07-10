@@ -4,7 +4,7 @@ Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Tags: widgets, post, Bootstrap, mobile, responsive,
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ function my_appw_link_text( $text ) {
 
 = 1.1 (Unreleased) =
 * Add PHPUnit testing to ensure stability. See [#2](https://github.com/kienstra/adapter-post-preview/issues/2).
+* Fix excerpt output when outside the loop. See [#10](https://github.com/kienstra/adapter-post-preview/issues/10).
+* Refactor plugin bootstrapping. See [#4](https://github.com/kienstra/adapter-post-preview/issues/4).
+* Refactor carousel class to mainly use a template, add PHPUnit tests. See [#9](https://github.com/kienstra/adapter-post-preview/pull/9).
+* Add wp-dev-lib as a submodule, with configuration files. See [#1](https://github.com/kienstra/adapter-post-preview/issues/1).
 
 = 1.0.2 =
 * Fixed height in mobile display.
