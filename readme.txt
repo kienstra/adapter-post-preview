@@ -35,10 +35,7 @@ The carousel of recent posts requires Twitter Bootstrap 3 with Glyphicons.
 = How can I change the text in the post link? =
 
 Put the following in your functions.php file:
-`apply_filters( 'appw_link_text' , 'my_appw_link_text' );
-function my_appw_link_text( $text ) {
-	 return 'Keep reading'; // or your own text
-}`
+`apply_filters( 'appw_link_text', function( $text ) { return 'Keep reading'; } ) // or your own text`
 
 == Screenshots ==
 
@@ -47,12 +44,14 @@ function my_appw_link_text( $text ) {
 
 == Changelog ==
 
-= 1.1 (Unreleased) =
+= 1.1 =
 * Add PHPUnit testing to ensure stability. See [#2](https://github.com/kienstra/adapter-post-preview/issues/2).
 * Fix excerpt output when outside the loop. See [#10](https://github.com/kienstra/adapter-post-preview/issues/10).
 * Refactor plugin bootstrapping. See [#4](https://github.com/kienstra/adapter-post-preview/issues/4).
 * Refactor carousel class to mainly use a template, add PHPUnit tests. See [#9](https://github.com/kienstra/adapter-post-preview/pull/9).
 * Add wp-dev-lib as a submodule, with configuration files. See [#1](https://github.com/kienstra/adapter-post-preview/issues/1).
+
+See the [v1.1 project](https://github.com/kienstra/adapter-post-preview/projects/1).
 
 = 1.0.2 =
 * Fixed height in mobile display.
