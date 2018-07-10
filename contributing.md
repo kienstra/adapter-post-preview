@@ -1,4 +1,4 @@
-#  Contributing To Widget Live Editor
+#  Contributing To Adapter Post Preview
 
 To clone the repository:
 ``` bash
@@ -32,5 +32,5 @@ $ phpunit --coverage-html /tmp/report
 2. Open a pull request to that branch
 3. Merge that pull request when the Travis builds and code review pass
 4. Create a release branch off [develop](https://github.com/kienstra/adapter-post-preview/tree/develop) when the release is ready
-5. Open a pull request to master, review it when the Travis builds pass, and merge it
-6. Deploy the plugin to [WordPress.org](https://wordpress.org/plugins/adapter-post-preview/)
+5. Open a pull request to [master](https://github.com/kienstra/adapter-post-preview/tree/master), review it when the Travis builds pass, and merge it
+6. Deploy the [master branch](https://github.com/kienstra/adapter-post-preview/tree/master) to [WordPress.org](https://wordpress.org/plugins/adapter-post-preview/)
