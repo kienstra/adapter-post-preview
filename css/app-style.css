@@ -1,76 +1,76 @@
 
 /* carousel styling */
 .adapter-post-preview .caorousel .item {
-  height : 350px ;   
+	height: 350px;
 }
 
 .adapter-post-preview .carousel .carousel-control {
-  background-image : none ;
-  top : 40% ;
-  bottom : 40% ;
-  filter : initial ;
+	background-image: none;
+	top: 40%;
+	bottom: 40%;
+	filter: initial;
 }
 
 .widget.adapter-post-preview .carousel .carousel-control {
-  filter : initial ;
+	filter: initial;
 }
 
-.adapter-post-preview .carousel-control .glyphicon { 
-  text-shadow : none ;
-  color : gray ;
-  opacity : .6 ; 
+.adapter-post-preview .carousel-control .glyphicon {
+	text-shadow: none;
+	color: gray;
+	opacity: .6;
 }
 
 .adapter-post-preview .carousel-indicators li {
-  background-color : gray ;
-  opacity : .6 ; 
+	background-color: gray;
+	opacity: .6;
 }
 
-.adapter-post-preview .carousel-control .glyphicon:hover ,
+.adapter-post-preview .carousel-control .glyphicon:hover,
 .adapter-post-preview .carousel-indicators li:hover {
-  opacity : 1 ;
+	opacity: 1;
 }
 
 .adapter-post-preview .img-responsive {
-  max-height : 100px ;
-  width : auto ;
-  height : auto ;
+	max-height: 100px;
+	width: auto;
+	height: auto;
 }
 
 .awr-row .adapter-post-preview .img-responsive {
-  margin-left : auto ;
-  margin-right : auto ;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .awr-row .adapter-post-preview .post-title h2 {
-  text-align : center ;
+	text-align: center;
 }
 
 .awr-row .adapter-post-preview h2 {
-  margin-top : 10px ;
+	margin-top: 10px;
 }
 
 .awr-row .adapter-post-preview .excerpt-and-link {
-  max-width : 70% ; 
+	max-width: 70%;
 }
 
 .adapter-post-preview .item {
-  height : 400px ;
+	height: 400px;
 }
 
-.col-md-12.adapter-post-preview .item ,
+.col-md-12.adapter-post-preview .item,
 .col-md-10.adapter-post-preview .item  {
-  height : 280px ;
+	height: 280px;
 }
 
-@media( max-width : 700px ) {
-  .adapter-post-preview .carousel .item {
-    height : 400px ;
-  }
+@media( max-width: 700px ) {
+	.adapter-post-preview .carousel .item {
+		height: 400px;
+	}
 }
 
-@media( max-width : 400px ) {
-  .adapter-post-preview .carousel .item {
-    height : 500px ;
-  }
+@media( max-width: 400px ) {
+	.adapter-post-preview .carousel .item {
+		height: 500px;
+	}
 }
