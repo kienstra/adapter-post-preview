@@ -1,0 +1,29 @@
+{
+  "name": "adapter-post-preview",
+  "version": "1.1",
+  "description": "Create a widget with a post's featured image, headline, excerpt, and link.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kienstra/adapter-post-preview.git"
+  },
+  "keywords": [
+    "plugin",
+    "widget"
+  ],
+  "author": "@ryankienstra",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/kienstra/adapter-post-preview/issues"
+  },
+  "homepage": "https://github.com/kienstra/adapter-post-preview#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "grunt-cli": "^1.2.0",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.5"
+  }
+}

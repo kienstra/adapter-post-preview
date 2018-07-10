@@ -1,0 +1,18 @@
+{
+    "name": "root/adapter-post-preview",
+    "description": "Create a widget with a post's featured image, headline, excerpt, and link.",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Ryan Kienstra",
+            "email": "kienstraryan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4"
+    }
+}
