@@ -36,7 +36,7 @@ The carousel of recent posts requires Bootstrap 3 or later and Glyphicons.
 = How can I change the text in the post link? =
 
 Put the following in your functions.php file:
-`add_filter( 'appw_link_text', function( $text ) { return 'Keep reading'; } ) // or your own text`
+`add_filter( 'appw_link_text', function( $text ) { return 'Keep reading'; } ) // Or your own text.`
 
 == Screenshots ==
 
