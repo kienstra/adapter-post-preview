@@ -154,6 +154,13 @@ class Test_Adapter_Post_Widget extends \WP_UnitTestCase {
 		$output = ob_get_clean();
 		$this->assertContains( get_the_title( $mock_post_id ), $output );
 		$this->assertContains( get_the_permalink( $mock_post_id ), $output );
+
+		// The SELECTED_POST value is incorrect, so this should only output the $before_widget and $after_widget values.
+		$instance = array( Adapter_Post_Widget::SELECTED_POST => true );
+		ob_start();
+		$this->widget->widget( $args, $instance );
+		$output = ob_get_clean();
+		$this->assertEquals( $before_widget . $after_widget, $output );
 	}
 
 	/**

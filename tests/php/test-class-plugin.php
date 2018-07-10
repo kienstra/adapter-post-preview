@@ -39,6 +39,11 @@ class Test_Plugin extends \WP_UnitTestCase {
 		$this->assertEquals( Plugin::get_instance(), $this->plugin );
 		$this->assertEquals( __NAMESPACE__ . '\Plugin', get_class( Plugin::get_instance() ) );
 		$this->assertEquals( plugins_url( Plugin::SLUG ), $this->plugin->location );
+
+		// Ensure that get_instance() instantiates Plugin correctly when Plugin::$instance is null.
+		Plugin::$instance = null;
+		$instance         = Plugin::get_instance();
+		$this->assertEquals( Plugin::$instance, $instance );
 	}
 
 	/**

@@ -62,17 +62,22 @@ class Plugin {
 	public $classes = array( 'adapter-post-widget', 'carousel' );
 
 	/**
+	 * The instance of this class.
+	 *
+	 * @var Plugin
+	 */
+	public static $instance;
+
+	/**
 	 * Gets the instance of this plugin.
 	 *
 	 * @return Plugin $instance The plugin instance.
 	 */
 	public static function get_instance() {
-		static $instance;
-		if ( ! $instance instanceof Plugin ) {
-			$instance = new Plugin();
+		if ( ! self::$instance instanceof Plugin ) {
+			self::$instance = new Plugin();
 		}
-
-		return $instance;
+		return self::$instance;
 	}
 
 	/**
