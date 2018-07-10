@@ -6,10 +6,11 @@ Show your best posts in any widget area. Creates a widget with a post preview, o
 **Contributors:** [ryankienstra](https://profiles.wordpress.org/ryankienstra)  
 **Tags:** [widgets](https://wordpress.org/plugins/tags/widgets), [post](https://wordpress.org/plugins/tags/post), [Bootstrap](https://wordpress.org/plugins/tags/Bootstrap), [mobile](https://wordpress.org/plugins/tags/mobile), [responsive](https://wordpress.org/plugins/tags/responsive)  
 **Requires at least:** 3.8  
-**Tested up to:** 4.1  
+**Tested up to:** 4.9  
 **Stable tag:** 1.1  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/  
+**Requires PHP:** 5.4  
 
 [![Build Status](https://travis-ci.org/kienstra/adapter-post-preview.svg?branch=master)](https://travis-ci.org/kienstra/adapter-post-preview) 
 
