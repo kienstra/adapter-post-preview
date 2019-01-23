@@ -57,22 +57,6 @@ class Test_Plugin extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Test load_files().
-	 *
-	 * @covers Plugin::load_files().
-	 */
-	public function test_load_files() {
-		$classes = array(
-			'Adapter_Post_Widget',
-			'Carousel',
-		);
-
-		foreach ( $classes as $class ) {
-			$this->assertTrue( class_exists( __NAMESPACE__ . '\\' . $class ) );
-		}
-	}
-
-	/**
 	 * Test add_actions().
 	 *
 	 * @covers Plugin::add_actions().

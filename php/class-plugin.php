@@ -90,19 +90,7 @@ class Plugin {
 	 */
 	public function init() {
 		$this->location = plugins_url( self::SLUG );
-		$this->load_files();
 		$this->add_actions();
-	}
-
-	/**
-	 * Loads the plugin files.
-	 *
-	 * @return void
-	 */
-	public function load_files() {
-		foreach ( $this->classes as $class ) {
-			include_once __DIR__ . "/class-{$class}.php";
-		}
 	}
 
 	/**
